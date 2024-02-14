@@ -24,3 +24,9 @@ public enum AbilityScoreNames
     Wisdom,
     Charisma
 };
+
+public enum AttackType
+{
+    Attack,
+    Heal
+};
