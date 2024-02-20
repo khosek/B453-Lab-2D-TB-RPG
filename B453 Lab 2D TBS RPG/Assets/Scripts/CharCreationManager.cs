@@ -11,6 +11,7 @@ public class CharCreationManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI classText;
     [SerializeField] TextMeshProUGUI[] statText;
     [SerializeField] TMP_InputField nameInput;
+    [SerializeField] TextMeshProUGUI classDescription;
     private CharacterClasses chosenClass;
     private int[] rolledScores = new int[6];
     private AbilityScores myAbilityScores;
@@ -25,24 +26,28 @@ public class CharCreationManager : MonoBehaviour
             characterImage.sprite = classSprites[0];
             chosenClass = CharacterClasses.Paladin;
             classPrefabIndex = 0;
+            classDescription.text = "Fuelled by the Oath you swore to uphold justice and righteousness, you are a beacon of hope in dark times.";
         }
         else if (className == "Cleric")
         {
             characterImage.sprite = classSprites[1];
             chosenClass = CharacterClasses.Cleric;
             classPrefabIndex = 1;
+            classDescription.text = "Clerics are representatives of the gods they worship, wielding potent divine magic for good or ill.";
         }
         else if (className == "Mage")
         {
             characterImage.sprite = classSprites[2];
             chosenClass = CharacterClasses.Mage;
             classPrefabIndex = 2;
+            classDescription.text = "Mages master the arcane by specialising in individual schools of magic, combining ancient spells with modern research.";
         }
         else if (className == "Thief")
         {
             characterImage.sprite = classSprites[3];
             chosenClass = CharacterClasses.Thief;
             classPrefabIndex = 3;
+            classDescription.text = "With stealth, skill, and uncanny reflexes, a thief's versatility lets them get the upper hand in almost any situation.";
         }
 
         classText.text = "Level 1 " + className;
