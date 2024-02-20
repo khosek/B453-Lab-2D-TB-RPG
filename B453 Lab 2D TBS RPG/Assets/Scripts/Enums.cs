@@ -5,8 +5,9 @@ using UnityEngine;
 public enum CharacterClasses
 {
     Paladin,
-    Wizard,
-    Ranger
+    Mage,
+    Thief,
+    Cleric
 };
 
 public enum CharacterTypes

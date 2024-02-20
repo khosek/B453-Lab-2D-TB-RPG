@@ -13,6 +13,14 @@ public class PlayerController : MonoBehaviour
     [Header("Interact Variables")]
     public bool interactInput;
 
+    [Header("Character Data")]
+    public Character myChar;
+
+    private void Start()
+    {
+        myChar = GameManager.Instance.characterArray[0];
+        gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.characterSprite;
+    }
 
     private void Update()
     {
