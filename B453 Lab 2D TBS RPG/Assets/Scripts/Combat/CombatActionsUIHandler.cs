@@ -17,10 +17,13 @@ public class CombatActionsUIHandler : MonoBehaviour
 
     public void OnBeginTurn(CombatCharacter character)
     {
+        Debug.Log("Combat Actions UI Handler is Called");
+
         if (!character.isPlayer)
         {
             return;
         }
+
 
         visualContainer.SetActive(true);
 

@@ -22,6 +22,12 @@ public class TurnManager : MonoBehaviour
         {
             instance = this;
         }
+
+    }
+
+    private void Start()
+    {
+        OnBeginTurn();
     }
 
     public void OnBeginTurn()
