@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         // Load the passed character into the characterArray.
         characterArray[0] = newCharacter;
+        // Set the sprite to be used for this character to be the passed Sprite.
         this.characterSprite = characterSprite;
         // Loads the third scene in our build which will be the overworld scene.
         SceneManager.LoadScene(2);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// A struct for all the different ability score values.
 public struct AbilityScores
 {
     public int Strength; // Physical Power
@@ -14,14 +15,22 @@ public struct AbilityScores
 
 public class Character
 {
+    [Header("Stats and Details")]
+    [Tooltip("The name of this character.")]
     public string characterName;
+    [Tooltip("This character's class.")]
     public CharacterClasses characterClass;
+    [Tooltip("This character's type (Human or NPC)")]
     public CharacterTypes characterType;
+    [Tooltip("The AbilityScores struct for this Character that stores all their ability scores.")]
     public AbilityScores score;
+    [Tooltip("The specific prefab to use for this Character.")]
     public GameObject classPrefab;
 
+    // Constructor for a new Character.
     public Character(string characterName, CharacterClasses characterClass, AbilityScores abs, GameObject classPrefab, CharacterTypes characterType)
     {
+        // Update all stats with the passed in data.
         this.characterName = characterName;
         this.characterClass = characterClass;
         this.score = abs;
@@ -29,6 +38,7 @@ public class Character
         this.characterType = characterType;
     }
 
+    // Return the value of the score passed in.
     public int GetAbilityScoreBonus(AbilityScoreNames abilityName)
     {
         switch (abilityName)
@@ -50,6 +60,7 @@ public class Character
         }
     }
 
+    // Calculate the bonus for the passed in ability score.
     public int CalculateAbilityScoreBonus(int baseValue)
     {
         if (baseValue <= 2)
