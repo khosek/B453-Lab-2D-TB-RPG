@@ -85,6 +85,7 @@ public class CombatCharacter : MonoBehaviour
         {
             // Instantiate the projectile.
             GameObject proj = Instantiate(combatAction.ProjectilePrefab, transform.position, Quaternion.identity);
+            proj.GetComponent<Projectile>().SetTarget(opponent);
             //proj.GetComponent<Projectile>().Initialize(opponent, TurnManager.instance.EndTurn);
         }
         // Check to see instead if the Combat Action has a positive heal amount.
