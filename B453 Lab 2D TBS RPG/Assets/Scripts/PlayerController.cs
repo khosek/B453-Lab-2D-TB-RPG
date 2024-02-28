@@ -69,4 +69,9 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Pressed interact button");
     }
+
+    private void TryInteractableObject()
+    {
+
+    }
 }
