@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     [Tooltip("The X and Y axis input for the player.")]
     public Vector2 moveInput;
+    public Vector2 facingDir;
 
     [Header("Interact Variables")]
     public bool interactInput;
+    public float rayCastLength;
+    public LayerMask interactLayerMask;
 
     [Header("Character Data")]
     [Tooltip("The Character data object for this character.")]
@@ -30,6 +33,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (moveInput.magnitude != 0.0f)
+        {
+            facingDir = moveInput.normalized;
+        }
+
         // If the player is trying to interact with something...
         if (interactInput)
         {
@@ -67,11 +75,19 @@ public class PlayerController : MonoBehaviour
     // Method called when the player tries to interact with something in the world.
     private void TryInteract()
     {
-        Debug.Log("Pressed interact button");
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + facingDir, 
+            Vector3.up, rayCastLength, interactLayerMask);
+
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+
+            if (hit.collider.gameObject.GetComponent<IConversational>() != null)
+            {
+                hit.collider.gameObject.GetComponent<IConversational>().StartConversation();
+            }
+        }
     }
 
-    private void TryInteractableObject()
-    {
-
-    }
+ 
 }
