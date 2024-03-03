@@ -12,11 +12,15 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     [Tooltip("The X and Y axis input for the player.")]
     public Vector2 moveInput;
+    [Tooltip("The direction the player is currently facing.")]
     public Vector2 facingDir;
 
     [Header("Interact Variables")]
+    [Tooltip("Whether the player is trying to interact with anything or not.")]
     public bool interactInput;
+    [Tooltip("How far away the player can interact with something.")]
     public float rayCastLength;
+    [Tooltip("The layer mask that all interactable things will be on.")]
     public LayerMask interactLayerMask;
 
     [Header("Character Data")]
@@ -33,8 +37,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Check to see if the player is moving at all...
         if (moveInput.magnitude != 0.0f)
         {
+            // Set the facing direction to match the direction they're moving in.
             facingDir = moveInput.normalized;
         }
 
@@ -75,19 +81,22 @@ public class PlayerController : MonoBehaviour
     // Method called when the player tries to interact with something in the world.
     private void TryInteract()
     {
+        // Send out a raycast from the player's position, in the direction they're facing and store it in hit.
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position + facingDir, 
             Vector3.up, rayCastLength, interactLayerMask);
 
+        // First check to make sure it hit a collider...
         if (hit.collider != null)
         {
+            // Print out the name of the object that was hit to the console.
             Debug.Log(hit.collider.gameObject.name);
 
+            // Check to see if the gameobject that owns the hit collider implements IConversational...
             if (hit.collider.gameObject.GetComponent<IConversational>() != null)
             {
+                // Call the StartConversation() method on the gameobject that the raycast hit.
                 hit.collider.gameObject.GetComponent<IConversational>().StartConversation();
             }
         }
     }
-
- 
 }
