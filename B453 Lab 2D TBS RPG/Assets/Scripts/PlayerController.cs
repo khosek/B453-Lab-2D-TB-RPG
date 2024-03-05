@@ -97,6 +97,11 @@ public class PlayerController : MonoBehaviour
                 // Call the StartConversation() method on the gameobject that the raycast hit.
                 hit.collider.gameObject.GetComponent<IConversational>().StartConversation();
             }
+
+            if (hit.collider.gameObject.GetComponent<Fightable>() != null)
+            {
+                hit.collider.gameObject.GetComponent<Fightable>().LoadFight();
+            }
         }
     }
 }
