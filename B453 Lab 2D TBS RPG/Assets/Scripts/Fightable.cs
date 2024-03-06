@@ -6,10 +6,5 @@ using UnityEngine.SceneManagement;
 
 public class Fightable : MonoBehaviour
 {
-    [SerializeField] string fightName;
-
-    public void LoadFight()
-    {
-        SceneManager.LoadScene(fightName);
-    }
+    [SerializeField] public string fightName;
 }

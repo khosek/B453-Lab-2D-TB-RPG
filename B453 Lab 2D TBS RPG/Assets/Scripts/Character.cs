@@ -27,6 +27,11 @@ public class Character
     [Tooltip("The specific prefab to use for this Character.")]
     public GameObject classPrefab;
 
+    public int maxHp = 20;
+    public int curHp = 20;
+    int xp = 0;
+    int level = 1;
+
     // Constructor for a new Character.
     public Character(string characterName, CharacterClasses characterClass, AbilityScores abs, GameObject classPrefab, CharacterTypes characterType)
     {
@@ -86,6 +91,17 @@ public class Character
         else
         {
             return 0;
+        }
+    }
+
+    public void gainXP(int xp)
+    {
+        this.xp += xp;
+        if(this.xp > 10)
+        {
+            level += this.xp / 10;
+            maxHp = level * 20;
+            this.xp %= 10;
         }
     }
 }

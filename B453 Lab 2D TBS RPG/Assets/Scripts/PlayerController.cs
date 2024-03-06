@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
             if (hit.collider.gameObject.GetComponent<Fightable>() != null)
             {
-                hit.collider.gameObject.GetComponent<Fightable>().LoadFight();
+                GameManager.Instance.EnterFight(hit.collider.gameObject.GetComponent<Fightable>().fightName, this.transform);
             }
         }
     }

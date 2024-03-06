@@ -18,6 +18,8 @@ public class CombatCharacter : MonoBehaviour
     [SerializeField] private CombatCharacter opponent;
     private Vector3 startPos;
 
+    [SerializeField] int xp;
+
     private void Start()
     {
         // Saves the current position the character is spawned in at.
@@ -50,6 +52,7 @@ public class CombatCharacter : MonoBehaviour
     {
         // Invoke the onCharacterDie event.
         CombatEvents.instance.e_onCharacterDie.Invoke(this);
+        GameManager.Instance.ReturnOverworld(xp);
         // Destroy this character.
         Destroy(gameObject);
     }
